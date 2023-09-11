@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:to_do/home/settings_tab.dart';
-import 'package:to_do/home/tasks_list.dart';
+import 'package:to_do/home/settings_tab/settings_tab.dart';
+import 'package:to_do/home/tasks_tab/tasks_list.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'Home';
