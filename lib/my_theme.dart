@@ -25,6 +25,16 @@ class MyTheme{
             fontSize: 22,
             color: blueColor,
           fontWeight: FontWeight.bold
+        ),
+        titleSmall: TextStyle(
+            fontSize: 24,
+            color: blueColor,
+            fontWeight: FontWeight.bold
+        ),
+        bodyMedium: TextStyle(
+            fontSize: 22,
+            color: Colors.black,
+            fontWeight: FontWeight.bold
         )
     )
   );

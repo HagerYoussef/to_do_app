@@ -13,10 +13,10 @@ class MyDataBase {
     });
   }
 
-  void insertTask(Task task) {
+  static Future<void> insertTask(Task task) async {
     var taskCollection = getTasksCollection();
-    var taskDoc = taskCollection.doc();
-    task.id = taskDoc.id;
-    taskDoc.set(task);
+    var doc = taskCollection.doc();
+    task.id = doc.id;
+    doc.set(task);
   }
 }
