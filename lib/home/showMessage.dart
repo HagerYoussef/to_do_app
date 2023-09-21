@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 
-void showMessage(BuildContext context, String message,
-    {VoidCallback? positiveAction}) {
+void showMessage(BuildContext context, String message,) {
   List<Widget> actions = [];
-  if (positiveAction != null) {
     actions.add(TextButton(
         onPressed: () {
           Navigator.pop(context);
         },
         child: Text('OK')));
-  }
   showDialog(
       context: context,
       builder: (context) {

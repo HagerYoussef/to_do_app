@@ -11,7 +11,6 @@ class MyTheme{
     scaffoldBackgroundColor: ScaffoldBackgroundColor,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       elevation: 0,
-      backgroundColor: Colors.transparent,
       selectedIconTheme:  IconThemeData(
           color: blueColor
       ),
