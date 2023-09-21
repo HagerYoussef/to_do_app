@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:to_do/database/myDataBase.dart';
 import 'package:to_do/database/task_data.dart';
+import 'package:to_do/date_utilties.dart';
 import 'package:to_do/home/showMessage.dart';
 
 class TaskBottomSheet extends StatefulWidget {
@@ -114,14 +115,14 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
       Task task = Task(
           title: title,
           description: description,
-          dataTime: selectedDate,
+          dataTime: ignore(selectedDate),
           isDone: false);
       MyDataBase?.insertTask(task).then((value) {
-        showMessage(context, 'Task Added Successfully', positiveAction: () {});
+        showMessage(context, 'Task Added Successfully');
       }).onError((error, stackTrace) {
-        showMessage(context, 'something went wrong , try again later', positiveAction: () {});
-      }).timeout(Duration(seconds: 5), onTimeout: () {
-        showMessage(context, 'Task Saved Locally', positiveAction: () {});
+        showMessage(context, 'something went wrong , try again later');
+      }).timeout(Duration(seconds: 3), onTimeout: () {
+        showMessage(context, 'Task Saved Locally');
       });
     }
   }

@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:to_do/database/myDataBase.dart';
+import 'package:to_do/home/showMessage.dart';
+
+import '../../database/task_data.dart';
 
 class TaskWidget extends StatelessWidget {
+  Task task;
+  TaskWidget(this.task);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,7 +18,15 @@ class TaskWidget extends StatelessWidget {
           motion: DrawerMotion(),
           children: [
             SlidableAction(
-              onPressed: (context) {},
+              onPressed: (_) {
+                MyDataBase.deleteTask(task).then((value){
+                  showMessage(context, 'Task Deleted Successfully');
+                }).onError((error, stackTrace){
+                  showMessage(context, 'Something went wrong');
+                }).timeout(Duration(seconds: 3),onTimeout: (){
+                  showMessage(context,'Task Deleted Locally');
+                });
+              },
               backgroundColor: Color(0xFFFE4A49),
               foregroundColor: Colors.white,
               icon: Icons.delete,
@@ -45,7 +60,7 @@ class TaskWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'This is my first task',
+                      task.title ?? "",
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     SizedBox(
@@ -58,7 +73,7 @@ class TaskWidget extends StatelessWidget {
                           width: 5,
                         ),
                         Text(
-                          '10:30 AM',
+                          task.description ?? "",
                           style: Theme.of(context).textTheme.bodySmall,
                         )
                       ],
@@ -67,7 +82,7 @@ class TaskWidget extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: (){},
+                onTap: () {},
                 child: Container(
                   width: 80,
                   height: 40,
