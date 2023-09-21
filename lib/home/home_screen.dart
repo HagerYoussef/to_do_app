@@ -17,16 +17,23 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ToDo List'),
+        title: Text('ToDo List',style: TextStyle(
+          color: Colors.white
+        ),),
+        backgroundColor: Colors.blueAccent,
       ),
       bottomNavigationBar: BottomAppBar(
-        notchMargin: 5.0,
+        height: MediaQuery.of(context).size.height*0.11,
+        color: Colors.white,
+        elevation: 0,
+        notchMargin: 6.0,
         shape: CircularNotchedRectangle(),
         child: BottomNavigationBar(
+          backgroundColor: Colors.transparent,
           showSelectedLabels: false,
           showUnselectedLabels: false,
           currentIndex: selectedIndex,
-          iconSize: 34.0,
+          iconSize: 35.0,
           onTap: (index) {
             selectedIndex = index;
             setState(() {});
@@ -46,10 +53,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blueAccent,
         onPressed: () {
           showTaskBottomSheet();
         },
-        child: Icon(Icons.add),
+        child: Icon(Icons.add,color: Colors.white,),
         shape: RoundedRectangleBorder(
             side: BorderSide(width: 3, color: Colors.white),
             borderRadius: BorderRadius.circular(100)),
@@ -59,9 +67,11 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
   void showTaskBottomSheet(){
-    showModalBottomSheet(context: context, builder: (context){
+    showModalBottomSheet(
+        context: context, builder: (context){
       return TaskBottomSheet();
-    });
+    }
+    );
   }
   var tabs = [TasksList(), SettingsList()];
 }
